@@ -1,0 +1,21 @@
+{
+  "name": "node-creation-observer",
+  "version": "0.1.0",
+  "description": "Callback binding for Node creation events",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soufianesakhi/node-creation-observer-js.git"
+  },
+  "author": "Soufiane Sakhi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/soufianesakhi/node-creation-observer-js/issues"
+  },
+  "homepage": "https://github.com/soufianesakhi/node-creation-observer-js#readme",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-copy": "^0.8.2",
+    "grunt-string-replace": "^1.2.1"
+  }
+}
