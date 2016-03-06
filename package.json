@@ -1,7 +1,7 @@
 {
   "name": "node-creation-observer",
-  "version": "0.1.0",
-  "description": "Callback binding for Node creation events",
+  "version": "1.0.0",
+  "description": "Callback binding for HTML Node creation events",
   "main": "src/index.js",
   "repository": {
     "type": "git",

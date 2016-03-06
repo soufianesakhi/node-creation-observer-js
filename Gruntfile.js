@@ -60,5 +60,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-string-replace');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.registerTask('default', ['string-replace:dev', 'string-replace:debug']);
-    grunt.registerTask('release', ['copy:release']);
+    grunt.registerTask('release', ['string-replace:dev', 'string-replace:debug', 'copy:release']);
 }; 
