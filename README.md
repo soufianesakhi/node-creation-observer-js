@@ -16,11 +16,20 @@ In this case, the ```removeOnFirstMatch``` property should be set to true.
 ## Definition
 
 ```javascript
+// Add a new callback for a selector
 NodeCreationObserver.onCreation(
   String selector,
   function callback,
   boolean removeOnFirstMatch (optionnal, default value: false)
 );
+
+// Stop observing a selector 
+NodeCreationObserver.remove(
+  String selector
+);
+
+// Stop observing all the selectors
+NodeCreationObserver.stop();
 ```
 
 ## Usage
@@ -35,6 +44,12 @@ NodeCreationObserver.onCreation("MY_SELECTOR", function (element) {
 NodeCreationObserver.onCreation("#my_element_id", function (element) {
     // callback body
 }, true);
+
+// When observing "MY_SELECTOR" is no longer needed
+NodeCreationObserver.remove("MY_SELECTOR");
+    
+// When node observing is no longer needed
+NodeCreationObserver.stop();
 ```
 
 ## Implementation
