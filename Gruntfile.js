@@ -52,6 +52,14 @@ module.exports = function (grunt) {
                     rename: function (dest, src) {
                         return dest + '<%= pkg.name %>-<%= pkg.version %>.js';
                     }
+                },{
+                    expand: true,
+                    cwd: 'target/',
+                    src: ['index.js'],
+                    dest: 'release/',
+                    rename: function (dest, src) {
+                        return dest + '<%= pkg.name %>-latest.js';
+                    }
                 }]
             }
         }
