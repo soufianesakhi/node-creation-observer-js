@@ -13,16 +13,12 @@ interface NodeCreationObserverStatic {
     /**
      * Stop observing a selector
      */
-    remove: (selector: string) => void,
+    remove: (selector: string) => void;
     
     /**
      * Stop observing all the selectors
      */
     stop: () => void;
-}
-
-declare module "node-creation-observer" {
-    export = NodeCreationObserver;
 }
 
 declare var NodeCreationObserver: NodeCreationObserverStatic;

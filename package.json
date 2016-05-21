@@ -2,7 +2,7 @@
   "name": "node-creation-observer",
   "version": "1.1.1",
   "description": "Callback binding for HTML Node creation events",
-  "main": "src/index.js",
+  "main": "release/node-creation-observer-latest.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/soufianesakhi/node-creation-observer-js.git"
@@ -16,6 +16,7 @@
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-copy": "^0.8.2",
-    "grunt-string-replace": "^1.2.1"
+    "grunt-string-replace": "^1.2.1",
+    "grunt-ts": "^5.5.1"
   }
 }

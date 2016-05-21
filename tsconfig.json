@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "outDir": "target",
+        "noImplicitUseStrict": true,
+        "watch": true
+    },
+    "files": [
+        "src/NodeCreationObserver.ts",
+        "src/NodeCreationObserver.d.ts"
+    ]
+}

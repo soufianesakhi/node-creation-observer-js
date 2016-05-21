@@ -4,7 +4,8 @@
  * Copyright (c) 2016 Soufiane Sakhi
  */
 
-var NodeCreationObserver = function () {
+/// <reference path="./NodeCreationObserver.d.ts" />
+var NodeCreationObserver = function () : NodeCreationObserverStatic {
     var mutationObserver = null;
     var observedNodeAttribute = "node-creation-observer";
     var listeners = {};
@@ -80,7 +81,7 @@ var NodeCreationObserver = function () {
     }
 
     return {
-        onCreation: function (selector, callback, removeOnFirstMatch) {
+        onCreation: (selector, callback, removeOnFirstMatch) => {
             console.log("Adding callback for selector: " + selector);
             if (!listeners[selector]) {
                 listeners[selector] = new ListenerContext(removeOnFirstMatch);
@@ -93,7 +94,7 @@ var NodeCreationObserver = function () {
             }
         },
         remove: removeListener,
-        stop: function () {
+        stop: () => {
             listeners = {};
             stopObserving();
         }

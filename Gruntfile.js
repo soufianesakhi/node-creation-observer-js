@@ -1,19 +1,26 @@
 module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        ts: {
+            default: {
+                tsconfig: true,
+                options: {
+                    removeComments: false,
+                    sourceMap: false
+                }
+            }
+        },
         'string-replace': {
             'dev': {
-                files: [{
-                    expand: true,
-                    cwd: 'src/',
-                    src: ['**'],
-                    dest: 'target/',
-                    rename: function (dest, src) {
-                        return dest + src.replace('.js', '-debug.js');
-                    }
-                }],
+                files: {
+                    'target/NodeCreationObserver-debug.js': ['target/NodeCreationObserver.js']
+                },
                 options: {
                     replacements: [
+                        {
+                            pattern: /\/\/\/[^\r\n]*[\r\n]+/ig,
+                            replacement: ''
+                        },
                         {
                             pattern: /\s*module\.exports[^\r\n]*/ig,
                             replacement: ''
@@ -25,15 +32,9 @@ module.exports = function (grunt) {
                 }
             },
             'debug': {
-                files: [{
-                    expand: true,
-                    cwd: 'target/',
-                    src: ['**'],
-                    dest: 'target/',
-                    rename: function (dest, src) {
-                        return dest + src.replace('-debug.js', '.js');
-                    }
-                }],
+                files: {
+                    'target/NodeCreationObserver.js': ['target/NodeCreationObserver-debug.js']
+                },
                 options: {
                     replacements: [{
                         pattern: /\s*console\.log[^\r\n]*/ig,
@@ -47,7 +48,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: 'target/',
-                    src: ['index.js'],
+                    src: ['NodeCreationObserver.js'],
                     dest: 'release/',
                     rename: function (dest, src) {
                         return dest + '<%= pkg.name %>-<%= pkg.version %>.js';
@@ -55,18 +56,27 @@ module.exports = function (grunt) {
                 },{
                     expand: true,
                     cwd: 'target/',
-                    src: ['index.js'],
+                    src: ['NodeCreationObserver.js'],
                     dest: 'release/',
                     rename: function (dest, src) {
                         return dest + '<%= pkg.name %>-latest.js';
+                    }
+                },{
+                    expand: true,
+                    cwd: 'src/',
+                    src: ['NodeCreationObserver.d.ts'],
+                    dest: 'release/',
+                    rename: function (dest, src) {
+                        return dest + '<%= pkg.name %>-latest.d.ts';
                     }
                 }]
             }
         }
     });
 
+    grunt.loadNpmTasks('grunt-ts');
     grunt.loadNpmTasks('grunt-string-replace');
     grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.registerTask('default', ['string-replace:dev', 'string-replace:debug']);
-    grunt.registerTask('release', ['string-replace:dev', 'string-replace:debug', 'copy:release']);
-}; 
+    grunt.registerTask('default', ['ts', 'string-replace:dev', 'string-replace:debug']);
+    grunt.registerTask('release', ['ts', 'string-replace:dev', 'string-replace:debug', 'copy:release']);
+};
