@@ -6,20 +6,24 @@
 
 /// <reference path="./NodeCreationObserver.d.ts" />
 var NodeCreationObserver = function () : NodeCreationObserverStatic {
-    var mutationObserver = null;
+    var mutationObserver : MutationObserver = null;
     var observedNodeAttribute = "node-creation-observer";
-    var listeners = {};
+    var listeners : { [key: string]: ListenerContext; } = {};
     var options = {
         childList: true,
         subtree: true
     };
 
-    function ListenerContext(removeOnFirstMatch) {
-        this.callbacks = [];
-        this.removeOnFirstMatch = removeOnFirstMatch == undefined ? false : removeOnFirstMatch;
+    class ListenerContext {
+        callbacks: ((element: Element) => void)[];
+        removeOnFirstMatch: boolean;
+        constructor(removeOnFirstMatch) {
+            this.callbacks = [];
+            this.removeOnFirstMatch = removeOnFirstMatch == undefined ? false : removeOnFirstMatch;
+        }
     }
 
-    function onMutationCallback(mutationRecordArray) {
+    function onMutationCallback() {
         Object.keys(listeners).forEach(function (selector) {
             invokeCallbacks(selector);
         });
@@ -43,13 +47,13 @@ var NodeCreationObserver = function () : NodeCreationObserverStatic {
         }
     }
 
-    function filterNewElements(elements) {
-        var newElements = [];
+    function filterNewElements(elements: NodeListOf<Element>) : Element[] {
+        var newElements : Element[] = [];
         for (var i = 0; i < elements.length; i++) {
             var element = elements[i];
             var attr = element.getAttribute(observedNodeAttribute);
             if (attr == null) {
-                element.setAttribute(observedNodeAttribute, 1);
+                element.setAttribute(observedNodeAttribute, "1");
                 newElements.push(element);
             }
         };

@@ -1,6 +1,6 @@
 {
   "name": "node-creation-observer",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Callback binding for HTML Node creation events",
   "main": "release/node-creation-observer-latest.js",
   "repository": {
