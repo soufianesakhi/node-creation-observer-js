@@ -35,6 +35,10 @@ NodeCreationObserver.stop();
 ## Usage
 
 ```javascript
+// (optional)
+// Change the attribute that will be used to mark a node as observed
+NodeCreationObserver.init("observed-attribute");
+
 // Use case 1
 NodeCreationObserver.onCreation("MY_SELECTOR", function (element) {
     // callback body
