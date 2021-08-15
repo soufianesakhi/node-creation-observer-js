@@ -1,6 +1,6 @@
 {
   "name": "node-creation-observer",
-  "version": "1.2",
+  "version": "1.2.0",
   "description": "Callback binding for HTML Node creation events",
   "main": "release/node-creation-observer-latest.js",
   "repository": {
@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/soufianesakhi/node-creation-observer-js#readme",
   "devDependencies": {
-    "grunt": "^0.4.5",
+    "grunt": "^1.4.1",
     "grunt-contrib-copy": "^0.8.2",
     "grunt-string-replace": "^1.2.1",
     "grunt-ts": "^5.5.1"

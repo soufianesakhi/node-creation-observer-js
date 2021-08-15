@@ -6,3 +6,5 @@
 node_modules/
 typings/
 target/
+release/*
+!release/node-creation-observer-latest.*
